@@ -1,9 +1,17 @@
 -- Завдання 2
 --Для бази даних Академія створіть такі запити:
 
--- 4. Вивести таблицю факультетів одним полем у такому форматі: 
--- «The dean of faculty [faculty] is [dean].».
+-- 5. Вивести прізвища професорів, ставка яких перевищує 1050.
 
-SELECT 
-    'The dean of faculty ' || Name || ' is ' || Dean AS FacultyInfo
-FROM Faculties;
+SELECT Surname, Salary
+FROM Teachers
+WHERE Salary::numeric > 1050;
+
+-- Salary::numeric, ::numeric означає, що ми хочемо привести 
+--тип даних стовпця Salary до числового типу numeric. 
+--Це дозволяє уникнути помилки порівняння між різними типами даних.
+
+--SELECT Surname, Salary
+--FROM Teachers
+--WHERE Salary > 1050; 
+-- так виводило помилку
